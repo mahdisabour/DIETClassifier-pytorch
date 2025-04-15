@@ -37,6 +37,8 @@ class DIETTrainer:
                                                eval_strategy="epoch",
                                                save_strategy="epoch",
                                                label_names=["entities_labels", "intent_labels"],
+                                               save_steps=10,                
+                                               eval_steps=10,
                                                save_total_limit=1)
 
         train_dataset, eval_dataset = random_split(dataset, [int(len(dataset)*train_range), len(dataset) - int(len(dataset)*train_range)], generator=torch.Generator().manual_seed(42))

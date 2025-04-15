@@ -1,6 +1,6 @@
 model:
-  model: test_model
-  tokenizer: test_model
+  model: sentence-transformers/LaBSE
+  tokenizer: sentence-transformers/LaBSE
   dataset_folder: dataset
   exclude_file: null
   entities:
