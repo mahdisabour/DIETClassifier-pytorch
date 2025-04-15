@@ -1,41 +1,25 @@
 model:
-  model: latest_model
-  tokenizer: latest_model
+  model: sentence-transformers/LaBSE
+  tokenizer: sentence-transformers/LaBSE
   dataset_folder: dataset
   exclude_file: null
   entities:
-  - working_type
-  - shift_type
+  - userpass
+  - date
+  - amount
+  - name
+  - email
+  - national_id
+  - card_number
+  - account_number
+  - iban
+  - request_number
+  - track_number
+  - postal_code
   intents:
-  - WorkTimesBreaches
-  - WorkingTimeBreachDiscipline
-  - HolidaysOff
-  - AnnualLeaveApplicationProcess
-  - SetWorkingType
-  - TemporarySetWorkingType
-  - WorkingHours
-  - WorkingDay
-  - BreakTime
-  - Pregnant
-  - AttendanceRecord
-  - SelectShiftType
-  - LaborContract
-  - Recruitment
-  - SickLeave
-  - UnpaidLeave
-  - PaidLeaveForFamilyEvent
-  - UnusedAnnualLeave
-  - RegulatedAnnualLeave
-  - rating
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  device: cuda
-  synonym:
-    office hour: office hours
-    office: office hours
-    office hours: office hour
+  - anonymizing
+  - normal
+  device: cpu
 training:
   train_range: 0.95
   num_train_epochs: 100
