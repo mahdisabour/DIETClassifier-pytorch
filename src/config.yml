@@ -8,7 +8,7 @@ model:
   intents:
   - anonymizing
   - normal
-  device: cpu
+  device: cuda
   synonym: {}
 training:
   train_range: 0.95
