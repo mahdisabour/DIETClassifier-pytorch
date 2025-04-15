@@ -4,7 +4,18 @@ model:
   dataset_folder: dataset
   exclude_file: null
   entities:
-  - working_type
+  - userpass
+  - email
+  - date
+  - amount
+  - name
+  - national_id
+  - card_number
+  - account_number
+  - iban
+  - request_number
+  - track_number
+  - postal_code
   intents:
   - anonymizing
   - normal
