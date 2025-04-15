@@ -1,6 +1,6 @@
 model:
-  model: sentence-transformers/LaBSE
-  tokenizer: sentence-transformers/LaBSE
+  model: latest_model
+  tokenizer: latest_model
   dataset_folder: dataset
   exclude_file: null
   entities:
@@ -19,7 +19,7 @@ model:
   intents:
   - anonymizing
   - normal
-  device: cuda
+  device: cpu
   synonym: {}
 training:
   train_range: 0.95

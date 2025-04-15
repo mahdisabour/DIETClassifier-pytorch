@@ -5,7 +5,7 @@ class RasaUser(HttpUser):
     @task
     def rasa_test(self):
         input_text = "this is test"
-        self.client.post(
+        self.client.get(
             f"/detect?input={input_text}",
         )
 

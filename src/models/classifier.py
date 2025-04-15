@@ -35,7 +35,7 @@ class DIETClassifier(BertPreTrainedModel):
                 raise RuntimeError(f"Cannot load configuration fil from {config.model} by error: {ex}")
 
             try:
-                checkpoint = torch.load(f"{config.model}/pytorch_model.bin")
+                checkpoint = torch.load(f"{config.model}/pytorch_model.bin", map_location=torch.device('cpu') if not torch.cuda.is_available() else None)
             except Exception as ex:
                 raise RuntimeError(f"Cannot load model from {config.model} by error: {ex}")
 

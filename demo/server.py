@@ -27,7 +27,7 @@ app.add_middleware(
 )
 
 
-@app.post("/detect")
+@app.get("/detect")
 async def detect(input: str):
     output = wrapper.predict([input])[0]
 
