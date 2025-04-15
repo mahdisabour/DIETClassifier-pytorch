@@ -61,7 +61,7 @@ def make_dataframe(files: List[str]) -> Tuple[pd.DataFrame, List[str], List[str]
             entities=[None for i in range(len(examples))]
         )
 
-        df = df.append(pd.DataFrame(data=new_data), ignore_index=True)
+        df = pd.concat([df, pd.DataFrame(data=new_data)], ignore_index=True)
 
     df = get_entity(df=df)
     df, updated_synonym_dict = get_entity_with_synonym(df=df)
@@ -70,6 +70,7 @@ def make_dataframe(files: List[str]) -> Tuple[pd.DataFrame, List[str], List[str]
 
     entities_list = []
     intents_list = []
+
     for _, row in df.iterrows():
         entity_data = row["entities"]
         if isinstance(entity_data, str):
@@ -101,7 +102,7 @@ def read_from_yaml(file: str) -> List[Dict[str, str]]:
     except Exception as ex:
         raise RuntimeError(f"Cannot read file {file} with error:\t{ex}")
 
-    data = yaml.load(f)["nlu"]
+    data = yaml.load(f, Loader=yaml.FullLoader)["nlu"]
     return data
 
 
@@ -110,15 +111,16 @@ def get_entity(df: pd.DataFrame) -> pd.DataFrame:
     extract entities in example sentences
 
     :param df: dataframe to process
-    :return: precessed dataframe
+    :return: processed dataframe
     """
-    for _, row in df.iterrows():
+    for idx, row in df.iterrows():
         entity_data = row["entities"]
         if not entity_data:
             entity_data = []
 
+        example = row["example"]
+
         while True:
-            example = row["example"]
             x = re.search(NORMAL_REGEX, example)
             if x is None:
                 break
@@ -129,7 +131,7 @@ def get_entity(df: pd.DataFrame) -> pd.DataFrame:
             entity_text = re.search(ENTITY_REGEX, entity).group()[1:-1]
             entity_name_text = re.search(ENTITY_NAME_REGEX, entity).group()[1:-1]
 
-            row["example"] = example.replace(entity, entity_text)
+            example = example.replace(entity, entity_text)
 
             entity_data.append(dict(
                 entity=entity_text,
@@ -137,10 +139,11 @@ def get_entity(df: pd.DataFrame) -> pd.DataFrame:
                 position=(start, end - (len(entity) - len(entity_text)))
             ))
 
-        row["entities"] = entity_data
+        # Update back the values in the original DataFrame
+        df.at[idx, "entities"] = entity_data
+        df.at[idx, "example"] = example
 
     return df
-
 
 def get_entity_with_synonym(df: pd.DataFrame) -> Tuple[pd.DataFrame, Dict[str, str]]:
     """
@@ -206,10 +209,10 @@ if __name__ == '__main__':
 
     sys.path.append(os.getcwd())
 
-    files = ["dataset/nlu_QnA_converted.yml", "dataset/nlu_QnA_converted.yml"]
+    files = ["dataset/nlu_QnA_converted.yml"]
 
     df, entities_list, intents_list, synonym_dict = make_dataframe(files)
     print(df.head(20))
-    print(entities_list)
-    print(intents_list)
-    print(synonym_dict)
+    print(f"{entities_list=}")
+    print(f"{intents_list=}")
+    print(f"{synonym_dict=}")

@@ -30,7 +30,7 @@ class DIETClassifierWrapper:
             except Exception as ex:
                 raise RuntimeError(f"Cannot read config file from {config}: {ex}")
             self.config_file_path = config
-            config = yaml.load(f)
+            config = yaml.load(f, Loader=yaml.FullLoader)
 
         self.config = config
         self.util_config = config.get("util", None)
@@ -182,7 +182,7 @@ class DIETClassifierWrapper:
         :param directory: path to save folder
         :return: None
         """
-        self.model.save_pretrained(directory)
+        self.model.save_pretrained(directory, safe_serialization=False)
         self.tokenizer.save_pretrained(directory)
 
         config_file_path = "config.yml" if not self.config_file_path else self.config_file_path

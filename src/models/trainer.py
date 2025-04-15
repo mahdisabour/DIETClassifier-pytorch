@@ -34,7 +34,8 @@ class DIETTrainer:
                                                load_best_model_at_end=True,
                                                metric_for_best_model="loss",
                                                greater_is_better=False,
-                                               evaluation_strategy="epoch",
+                                               eval_strategy="epoch",
+                                               save_strategy="epoch",
                                                label_names=["entities_labels", "intent_labels"],
                                                save_total_limit=1)
 

@@ -1,28 +1,18 @@
 model:
-  model: sentence-transformers/LaBSE
-  tokenizer: sentence-transformers/LaBSE
+  model: test_model
+  tokenizer: test_model
   dataset_folder: dataset
   exclude_file: null
   entities:
-  - userpass
-  - date
-  - amount
-  - name
-  - email
-  - national_id
-  - card_number
-  - account_number
-  - iban
-  - request_number
-  - track_number
-  - postal_code
+  - working_type
   intents:
   - anonymizing
   - normal
   device: cpu
+  synonym: {}
 training:
   train_range: 0.95
-  num_train_epochs: 100
+  num_train_epochs: 1
   per_device_train_batch_size: 4
   per_device_eval_batch_size: 4
   warmup_steps: 500
