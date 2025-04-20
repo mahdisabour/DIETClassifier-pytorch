@@ -35,5 +35,5 @@ async def detect(input: str):
     del output["intent_ranking"]
 
     response = jsonable_encoder(output)
-    # response = convert_diet_result(response)
+    response = convert_diet_result(response)
     return JSONResponse(response)
