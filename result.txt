@@ -1,0 +1,110 @@
+============================= test session starts ==============================
+platform linux -- Python 3.10.12, pytest-8.3.5, pluggy-1.5.0
+rootdir: /home/mehdi/DIETClassifier-pytorch
+collected 1 item
+
+tests/quality/test_quality.py false negative
+text='لطفاً با یوزر TestPass_01 تست کنید.' true_entity='TestPass_۰۱' predicted_entities=['Pass_۰۱']
+=====================================
+false negative
+text='اکانتم با LoginNameHere فعال شد.' true_entity='LoginNameHere' predicted_entities=[]
+=====================================
+false negative
+text='نام کاربری User_Profile_7 را فراموش کرده\u200cام.' true_entity='User_Profile_۷' predicted_entities=['_Profile_۷']
+=====================================
+false negative
+text='لطفاً رمز عبور یوزر SecurePass88 را ریست کنید.' true_entity='SecurePass۸۸' predicted_entities=[]
+=====================================
+false negative
+text='لطفاً ۲۵۰۰۰ ریال از حسابم کم کنید.' true_entity='۲۵۰۰۰۰' predicted_entities=['۲۵۰۰۰ ریال']
+=====================================
+false negative
+text='تاریخ تولد من ۱۳۸۰/۰۱/۱۵ است.' true_entity='۱۳۸۰/۰۱/۱۵' predicted_entities=['۱۳۸۰', '۰۱', '۱۵']
+=====================================
+false negative
+text='آخرین مهلت پرداخت ۱۴۰۳/۱۲/۲۹ است.' true_entity='۱۴۰۳/۱۲/۲۹' predicted_entities=['۱۴۰۳', '۱۲', '۲۹']
+=====================================
+false negative
+text='لطفاً گزارش بازه ۸۸/۱۱/۳۰ تا امروز را بدهید.' true_entity='۸۸/۱۱/۳۰' predicted_entities=['۸۸', '۱۱', '۳۰']
+=====================================
+false negetive
+text=' ۶ مهر ماهه تاریخ انقضای کارت من ' true_entity='۶ مهر' predicted_entities=[]
+=====================================
+false negative
+text='شروع دوره از مهر ماه ۱۳۸۵ بود.' true_entity='مهر ماه ۱۳۸۵' predicted_entities=['مهر', '۱۳۸۵']
+=====================================
+false negative
+text='لطفاً پرواز ۱۴۰۴/۰۵/۰۱ را رزرو کنید.' true_entity='۱۴۰۴/۰۵/۰۱' predicted_entities=['۱۴۰۴', '۵', '۰۱']
+=====================================
+false negative
+text='برای تغییر شماره موبایل باید با کی صحبت کنم؟ اسمم فرشته جعفریه.' true_entity='فرشته جعفریه' predicted_entities=['فرشته جعفری']
+=====================================
+false negative
+text='لطفاً به حساب ۰۱۰۰۲۰۰۳۰۰۴۰۰ واریز کنید.' true_entity='۱۰۰۲۰۰۳۰۰۴۰۰' predicted_entities=['۰', '۱۰', '۲۰', '۰', '۳', '۰۰', '۰۰']
+=====================================
+false negative
+text='درخواست شماره REQ-556677 ثبت شد.' true_entity='REQ-۵۵۶۶۷۷' predicted_entities=['REQ', '۵۵۶۶۷۷']
+=====================================
+false negative
+text='درخواست شما با کد ۲۰۲۵-۱۲۳ در حال پردازش است.' true_entity='۲۰۲۵-۱۲۳' predicted_entities=['۲۰۲۵', '۱۲۳']
+=====================================
+false negative
+text='کد رهگیری مرسوله P1234567890 است.' true_entity='P۱۲۳۴۵۶۷۸۹۰' predicted_entities=['۲۳۴۵۶۷۸۹']
+=====================================
+false negative
+text='شماره پیگیری سفارش TRK-987654321 می\u200cباشد.' true_entity='TRK-۹۸۷۶۵۴۳۲۱' predicted_entities=['۹۸۷۶۵۴۳', '۲۱']
+=====================================
+false negetive
+text='وضعیت بسته با کد رهگیری 7766554433221 به روز شد.' true_entity='۷۷۶۶۵۵۴۴۳۳۲۲۱' predicted_entities=['۷۷۶۶۵۵۴۴۳۳۲۲۱']
+=====================================
+false negative
+text='کد رهگیری تراکنش پیگیری_1403_01 است.' true_entity='پیگیری_۱۴۰۳_۰۱' predicted_entities=[]
+=====================================
+false negative
+text='ایمیل من example.test@email.com است.' true_entity='example.test@email.com' predicted_entities=[]
+=====================================
+false negative
+text='لطفاً به آدرس my.name_123@domain.org ایمیل بزنید.' true_entity='my.name_۱۲۳@domain.org' predicted_entities=[]
+=====================================
+false negative
+text='ایمیل ایشان another-user@provider.net می\u200cباشد.' true_entity='another-user@provider.net' predicted_entities=[]
+=====================================
+false negative
+text='آدرس ایمیل شرکت info@company.co.ir است.' true_entity='info@company.co.ir' predicted_entities=[]
+=====================================
+false negative
+text='با ایمیل support.team@mail-server.com تماس بگیرید.' true_entity='support.team@mail-server.com' predicted_entities=[]
+=====================================
+false negative
+text='ایمیلم test_account99@yahoo.co.uk هست.' true_entity='test_account۹۹@yahoo.co.uk' predicted_entities=[]
+=====================================
+false negative
+text='آدرس ایمیل جدیدم user.profile@customdomain.ir است.' true_entity='user.profile@customdomain.ir' predicted_entities=[]
+=====================================
+false negative
+text='لطفاً به contact_us_now@webmail.com پیام دهید.' true_entity='contact_us_now@webmail.com' predicted_entities=[]
+=====================================
+false negative
+text='ایمیل پشتیبانی service-email@my-provider.org است.' true_entity='service-email@my-provider.org' predicted_entities=[]
+=====================================
+false negative
+text='ایمیل: persian.email.test@gmail.com.' true_entity='persian.email.test@gmail.com' predicted_entities=[]
+=====================================
+false positive
+text=' یه سوپری دارم من و یکی رو گذاشته بودم که رسیدا رو جمع کنه ولی یادش رف ، الان چیطورب میتنونم بینم چقدر اون روز دراورده ام؟' true_entity=None predicted_entities=[]
+=====================================
+false positive
+text='من یک چک دارم که امروز میخواستم آن را نغد کنم. اما موجودی کافی نبود. چه کاری میتوانم انجام بدهم؟' true_entity=None predicted_entities=[]
+=====================================
+
+✅ Evaluation Complete:
+True Positives: 619
+False Positives: 0
+False Negatives: 29
+
+Precision: 1.00
+Recall: 0.96
+F1-score: 0.98
+.
+
+============================== 1 passed in 30.19s ==============================

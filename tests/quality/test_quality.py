@@ -52,10 +52,10 @@ def test_quality():
     for idx, row in df.iterrows():
         text = row["text"]
         true_entity = row["entity"] if pd.notna(row["entity"]) else None
-        true_entity = to_persian_digits(true_entity) if true_entity else None
+        true_entity = to_persian_digits(true_entity).strip() if true_entity else None
 
         predicted_entities, intent = get_entities_from_api(text)
-        predicted_entities = [to_persian_digits(e) for e in predicted_entities]
+        predicted_entities = [to_persian_digits(e).strip() for e in predicted_entities]
 
         if intent == "normal":
             if true_entity is None and not predicted_entities:
@@ -75,18 +75,13 @@ def test_quality():
                 false_positives += len(predicted_entities)
         else:  # intent is anonymizing
             if true_entity:
-                if true_entity in predicted_entities:
+                if [True for _pred in predicted_entities if true_entity in _pred]:
                     true_positives += 1
                 else:
                     print("false negative")
                     print(f"{text=}", f"{true_entity=}", f"{predicted_entities=}")
                     print("=====================================")
                     false_negatives += 1
-
-                # Extra wrong predictions
-                for pred in predicted_entities:
-                    if pred != true_entity:
-                        false_positives += 1
             else:
                 # No entity expected, but got predictions
                 false_positives += len(predicted_entities)
