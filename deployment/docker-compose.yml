@@ -2,6 +2,8 @@ services:
   app:
     build: 
       context: ..
+      args:
+        GITHUB_TOKEN: ${GITHUB_TOKEN}
     container_name: anonymizer
     command: uvicorn demo.server:app --host 0.0.0.0 --port 8000
     ports:
@@ -10,3 +12,5 @@ services:
       - ../latest_model:/app/latest_model 
     environment:
       - PYTHONUNBUFFERED=1
+    env_file:
+      - .env
