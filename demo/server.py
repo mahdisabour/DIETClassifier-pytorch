@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from prometheus_fastapi_instrumentator import Instrumentator
-from logger import LogClass
+from monitoring_client.logger import LogClass
 
 from src.utils.convert import convert_diet_result
 from src.models.wrapper import DIETClassifierWrapper
